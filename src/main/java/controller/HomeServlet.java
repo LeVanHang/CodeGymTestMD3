@@ -22,7 +22,6 @@ public class HomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
-        int id = Integer.parseInt(req.getParameter("id"));
 
         if (action == null) {
             action = "";
@@ -30,16 +29,18 @@ public class HomeServlet extends HttpServlet {
         RequestDispatcher requestDispatcher;
         switch (action) {
             case "edit":
-                for (Student p: StudentDAO.getAll()) {
-                    if (p.getId() == id){
-                        req.setAttribute("student", p);
+                int id = Integer.parseInt(req.getParameter("id"));
+                for (Student student: StudentDAO.getAll()) {
+                    if (student.getId() == id){
+                        req.setAttribute("student", student);
                     }
                 }
-                RequestDispatcher dispatcher = req.getRequestDispatcher("/editStudent.jsp");
+                RequestDispatcher dispatcher = req.getRequestDispatcher("view/editStudent.jsp");
                 dispatcher.forward(req,resp);
                 break;
             case "delete":
-                StudentDAO.deleteStudent(id);
+                int id1 = Integer.parseInt(req.getParameter("id"));
+                StudentDAO.deleteStudent(id1);
                 resp.sendRedirect("/home");
                 break;
             case "create":
@@ -74,17 +75,18 @@ public class HomeServlet extends HttpServlet {
                 String email = req.getParameter("email");
                 int calssroom = req.getIntHeader("calassroom");
                 StudentDAO.editStudent(new Student(id,name,address, birthday.toLocalDate(),phone,email,calssroom));
-                resp.sendRedirect("/product");
+                resp.sendRedirect("/student");
+                break;
 
             case "create":
-                String name = req.getParameter("name");
-                String address = req.getParameter("address");
-                LocalDate birthday = LocalDate.parse(req.getParameter("date"));
-                String phone = req.getParameter("phone");
-                String email = req.getParameter("email");
-                int idClassRoom = Integer.parseInt(req.getParameter("idClassRoom"));
+                String name1 = req.getParameter("name");
+                String address1 = req.getParameter("address");
+                LocalDate birthday1 = LocalDate.parse(req.getParameter("birthday"));
+                String phone1 = req.getParameter("phone");
+                String email1 = req.getParameter("email");
+                int idClassRoom1 = Integer.parseInt(req.getParameter("idClassRoom"));
 
-                studentService.save(new Student(name, address, birthday, phone, email, idClassRoom));
+                studentService.save(new Student(name1, address1, Date.valueOf(birthday1), phone1, email1, idClassRoom1));
                 resp.sendRedirect("/home");
                 break;
 

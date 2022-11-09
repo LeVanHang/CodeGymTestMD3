@@ -43,16 +43,16 @@
         </tr>
 
 
-        <c:forEach items="${listHV}" var="hv">
+        <c:forEach items="${listStudent}" var="Stu">
             <tr>
-                <td>${hv.id}</td>
-                <td>${hv.name}</td>
-                <td>${hv.date}</td>
-                <td>${hv.email}</td>
-                <td>${hv.address}</td>
+                <td>${Stu.id}</td>
+                <td>${Stu.name}</td>
+                <td>${Stu.birthday}</td>
+                <td>${Stu.email}</td>
+                <td>${Stu.address}</td>
                 <td style="text-align: center">
-                    <a style="text-align: center" type="button" class="btn btn-warning" href="/edit?id=${hv.id}" >Edit</a>
-                    <a style="text-align: center" type="button" class="btn btn-danger" href="/home?action=delete&id=${hv.id}">Delete</a>
+                    <a style="text-align: center" type="button" class="btn btn-warning" href="/edit?id=${Stu.id}" >Edit</a>
+                    <a style="text-align: center" type="button" class="btn btn-danger" href="/home?action=delete&id=${Stu.id}">Delete</a>
                 </td>
             </tr>
         </c:forEach>

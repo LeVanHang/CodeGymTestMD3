@@ -22,7 +22,7 @@ public class StudentDAO {
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 String address = resultSet.getString("address");
-                LocalDate birthday = resultSet.getDate("dateofbirth").toLocalDate();
+                LocalDate birthday = resultSet.getDate("dateofbirthday").toLocalDate();
                 String phone = resultSet.getString("phone");
                 String email = resultSet.getString("email");
                 int idClassRoom = resultSet.getInt("idClassRoom");
@@ -84,7 +84,7 @@ public class StudentDAO {
 
     public static void deleteStudent(int id) {
         try {
-            String sql = "DELETE FROM  hocvien  WHERE (id= ?)";
+            String sql = "DELETE FROM  student  WHERE (id= ?)";
             Connection connection = ConnectMySQL.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, id);

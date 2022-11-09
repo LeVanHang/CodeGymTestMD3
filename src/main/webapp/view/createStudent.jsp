@@ -49,7 +49,7 @@
                 <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                     <div class="card-body p-4 p-md-5">
                         <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Create Form</h3>
-                        <form method="post" action="/concat?action=create">
+                        <form method="post" action="/home?action=create">
 
                             <div class="row">
                                 <div class="col-md-6 mb-4">
@@ -65,7 +65,7 @@
 
                                     <div class="form-outline">
                                         <input type="date" id="lastName" class="form-control form-control-lg"
-                                               name="birth">
+                                               name="birthday">
                                         <label class="form-label" for="lastName">Birthday</label>
                                     </div>
 
@@ -97,12 +97,22 @@
                                 <div class="col-md-6 mb-4 pb-2">
 
                                     <div class="form-outline">
-                                        <input type="tel" id="phoneNumber" class="form-control form-control-lg"
+                                        <input type="tel" id="phone" class="form-control form-control-lg"
                                                name="phone">
-                                        <label class="form-label" for="phoneNumber">Phone Number</label>
+                                        <label class="form-label" for="phone">Phone Number</label>
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <label>Class Room</label>
+                                <select class="form-control" name="idClassRoom" >
+                                    <c:forEach items="${listClass}" var="cr">
+                                        <option value="${cr.id}">${cr.name}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+<%--                            <button class="btn btn-success">Register</button>--%>
 
                             <div class="row">
                                 <div class="col-md-6 mb-4 pb-2">
